@@ -9,12 +9,13 @@ import { ActivityService } from '../services/activity.service';
 })
 export class ActivityComponent implements OnInit {
 
-  public activity: Activity[];
+  public activities: Activity[];
 
   constructor(private activityService: ActivityService) { }
 
   ngOnInit() {
-    this.activityService.getActivities().subscribe(activity => this.activity = activity);
+    this.activityService.getActivities().subscribe(activity => this.activities = activity);
+    console.log(this.activities);
   }
 
 }

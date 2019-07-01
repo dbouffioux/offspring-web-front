@@ -14,7 +14,7 @@ export class ActivityService {
 
   public getActivities(): Observable<Activity[]> {
     return this.http
-      .get<Activity[]>(`${environment.baseUrl}/activity`)
+      .get<Activity[]>(`${environment.baseUrl}activity`)
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 }
