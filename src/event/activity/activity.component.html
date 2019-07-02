@@ -3,6 +3,8 @@
 </p>
 <ul>
   <li *ngFor="let activity of (activities)">
-    {{activity.id}} - {{activity.name}} débute {{activity.dateDebut}} et fini {{activity.dateFin}}
+    {{activity.id}} - {{activity.name}} débute
+    {{ activity.dateDebut.year}}/{{activity.dateDebut.monthValue}}/{{activity.dateDebut.dayOfMonth }} et fini
+    {{ activity.dateFin.year}}/{{activity.dateFin.monthValue}}/{{activity.dateFin.dayOfMonth }}
   </li>
 </ul>
