@@ -1,3 +1,5 @@
+import { Activity } from './activity.model';
+
 export class Event {
   public id?: number;
   public name: string;
@@ -6,4 +8,5 @@ export class Event {
   public heureDebut: string;
   public heureFin: string;
   public creatorId: string;
+  public activities?: Activity[];
 }
