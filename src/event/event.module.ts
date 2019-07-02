@@ -4,7 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventsRoutingModule } from './events-routing.module';
 import { ActivityService } from './services/activity.service';
-import { ActivityComponent } from './activity/activity.component';
+import { ActivityComponent } from './container/activity/activity.component';
+import { EventComponent } from './container/event/event.component';
+import { EventService } from './services/event.service';
+import { EventItemComponent } from './component/event-item/event-item.component';
+import { ActivityItemComponent } from './component/activity-item/activity-item.component';
+import { ActivityListComponent } from './component/activity-list/activity-list.component';
 
 @NgModule({
   imports: [
@@ -13,7 +18,16 @@ import { ActivityComponent } from './activity/activity.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  declarations: [ActivityComponent],
-  providers: [ActivityService]
+  declarations: [
+    ActivityComponent,
+    EventComponent,
+    EventItemComponent,
+    ActivityItemComponent,
+    ActivityListComponent
+  ],
+  providers: [
+    ActivityService,
+    EventService
+  ]
 })
 export class EventModule { }

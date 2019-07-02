@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
-import { ActivityComponent } from './activity/activity.component';
+import { EventComponent } from './container/event/event.component';
+import { EventItemComponent } from './component/event-item/event-item.component';
+import { ActivityItemComponent } from './component/activity-item/activity-item.component';
 
 const routes: Routes = [
     {
-        path: '',
-        component: ActivityComponent,
+      path: '',
+      component: EventComponent,
     },
     {
-
+      path: ':id',
+      component: EventItemComponent,
+    },
+    {
+      path: 'activity:id',
+      component: ActivityItemComponent,
     }
 ];
 
