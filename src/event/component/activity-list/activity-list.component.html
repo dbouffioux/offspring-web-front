@@ -2,7 +2,7 @@
 <p>liste:</p>
 <ul>
   <li *ngFor="let activity of activities">
-      <a [routerLink]="['/activity', activity.id]">
+      <a [routerLink]="['activity', activity.id]">
         Lien vers {{ activity.name }}
       </a>
   </li>
