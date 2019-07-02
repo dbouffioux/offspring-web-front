@@ -1,9 +1,9 @@
 
-<p>activity-list works!</p>
+<p>liste:</p>
 <ul>
   <li *ngFor="let activity of activities">
       <a [routerLink]="['/activity', activity.id]">
-        Lien vers l'activité
+        Lien vers {{ activity.name }}
       </a>
   </li>
 </ul>

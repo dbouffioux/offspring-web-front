@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/event/models/activity.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ActivityService } from 'src/event/services/activity.service';
 
 @Component({
@@ -13,7 +13,6 @@ export class ActivityItemComponent implements OnInit {
   public activity: any;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private activityService: ActivityService
   ) { }

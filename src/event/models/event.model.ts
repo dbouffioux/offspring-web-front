@@ -8,5 +8,5 @@ export class Event {
   public heureDebut: string;
   public heureFin: string;
   public creatorId: string;
-  public activities?: Activity[];
+  public listActivity?: Activity[];
 }
