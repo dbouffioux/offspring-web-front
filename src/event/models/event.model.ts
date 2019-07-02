@@ -3,5 +3,7 @@ export class Event {
   public name: string;
   public dateDebut: string;
   public dateFin: string;
+  public heureDebut: string;
+  public heureFin: string;
   public creatorId: string;
 }
