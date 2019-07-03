@@ -6,6 +6,9 @@ const routes: Routes = [
   {
     path: 'events', loadChildren: '../event/event.module#EventModule'
   },
+  {
+    path: 'person', loadChildren: '../person/person.module#PersonModule'
+  },
   { path: '**', redirectTo: 'events'}
 ];
 
