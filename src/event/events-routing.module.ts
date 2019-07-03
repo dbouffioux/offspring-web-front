@@ -15,7 +15,7 @@ const routes: Routes = [
       component: EventItemComponent,
     },
     {
-      path: '/activity/:id',
+      path: 'activity/:id',
       component: ActivityItemComponent,
     },
     {

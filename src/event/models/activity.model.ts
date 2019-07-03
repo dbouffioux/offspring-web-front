@@ -1,3 +1,5 @@
+import { Person } from './person.model';
+
 export class Activity {
   public id?: number;
   public name: string;
@@ -7,4 +9,5 @@ export class Activity {
   public heureFin: string;
   public creatorId: string;
   public eventId: string;
+  public participants?: Person[];
 }
