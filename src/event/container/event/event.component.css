@@ -6,6 +6,6 @@ li {
   border-radius: 4px;
 }
 ul {
-  padding: 0;
-
+  padding-left : 50px;
+  padding-right : 50px;
 }
