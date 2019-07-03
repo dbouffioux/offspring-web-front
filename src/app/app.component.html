@@ -1,29 +1,37 @@
-<header>
-  <nav>
-    <ul>
-      <li>
-        <a href="/events">Evènements</a>
-      </li>
-      <li>
-        <a href="/account">Profil</a>
-      </li>
-      <li>
-        <a href="/register">Register</a>
-      </li>
-      <li>
-        <a href="/sign-in">Login / Logout</a>
-      </li>
-    </ul>
-  </nav>
-</header>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+  </style>
 <section id="container">
-  <router-outlet></router-outlet>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/events">Evènements</a>
+        </li>
+        <li>
+          <a href="/account">Profil</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+        <li>
+          <a href="/sign-in">Login / Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div id="content-container">
+      <router-outlet></router-outlet>
+  </div>
+  <footer>
+    <div>
+      <section id="logo">
+        <img alt="logo" src="assets/img/Logo The_Offspring.png"/>
+      </section>
+      <section id="copyright">
+          <p>Offspring - Copyright 2019 ™</p>
+      </section>
+    </div>
+  </footer>
 </section>
-<footer>
-  <section id="logo">
-    <img alt="logo"/>
-  </section>
-  <section id="copyright">
-      <div>Copyright 2019 ™</div>
-    </section>
-</footer>
+
