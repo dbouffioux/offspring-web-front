@@ -1,21 +1,24 @@
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
-  </style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+</style>
 <section id="container">
   <header>
     <nav>
+      <section id="logo">
+        <img alt="logo" src="assets/img/Logo The_Offspring.png"/>
+      </section>
       <ul>
         <li>
-          <a href="/events">Evènements</a>
+          <a [routerLink]="['/events']">Evènements</a>
         </li>
         <li>
-          <a href="/account">Profil</a>
+          <a [routerLink]="['/account']">Profil</a>
         </li>
         <li>
-          <a href="/register">Register</a>
+          <a [routerLink]="['/register']">Register</a>
         </li>
         <li>
-          <a href="/sign-in">Login / Logout</a>
+          <a [routerLink]="['/person/login']">Login / Logout</a>
         </li>
       </ul>
     </nav>

@@ -13,6 +13,7 @@ export class LoginFormComponent implements OnInit {
   public res: any;
   public log: Log;
   public form: FormGroup;
+  public error?: string;
 
   constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) {
     this.log = new Log();
@@ -25,13 +26,15 @@ export class LoginFormComponent implements OnInit {
 
   public submitForm() {
     const val = this.form.value;
-
     this.log.email = val.email;
     this.log.password = val.password;
-    console.log('submit ! ', this.log);
     const result = this.authenticationService.testLog(this.log);
-    result.subscribe(res => this.res = res)
-    console.log('result ! ', this.res);
+    result.subscribe(res => {
+      this.res = res;
+      if (this.res.error !== undefined) {
+        this.error = this.res.error;
+      }
+    });
   }
 
   public hasEmailError() {

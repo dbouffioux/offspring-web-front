@@ -1,5 +1,6 @@
 <form (ngSubmit)="submitForm()" [formGroup]="form">
   <h2>Connection</h2>
+  <div [hidden]="!error" class="error">{{ error }}</div>
 <div>
   <label>Email : </label>
   <input id="email" name="email" formControlName="email" />
