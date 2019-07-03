@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 @Component({
   selector: 'app-loginForm',
   templateUrl: './loginForm.component.html',
-  styleUrls: ['./loginForm.component.css']
+  styleUrls: ['./loginForm.component.scss']
 })
 export class LoginFormComponent implements OnInit {
 
@@ -32,6 +32,11 @@ export class LoginFormComponent implements OnInit {
     const result = this.authenticationService.testLog(this.log);
     result.subscribe(res => this.res = res)
     console.log('result ! ', this.res);
+  }
+
+  public hasEmailError() {
+    const control = this.form.get('email');
+    return control.errors && control.errors.required;
   }
 
   ngOnInit() {
