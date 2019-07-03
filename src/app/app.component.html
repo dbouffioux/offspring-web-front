@@ -1,29 +1,31 @@
-<header>
-  <nav>
-    <ul>
-      <li>
-        <a href="/events">Evènements</a>
-      </li>
-      <li>
-        <a href="/account">Profil</a>
-      </li>
-      <li>
-        <a href="/register">Register</a>
-      </li>
-      <li>
-        <a href="/sign-in">Login / Logout</a>
-      </li>
-    </ul>
-  </nav>
-</header>
 <section id="container">
-  <router-outlet></router-outlet>
-</section>
-<footer>
-  <section id="logo">
-    <img alt="logo"/>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/events">Evènements</a>
+          </li>
+          <li>
+            <a href="/account">Profil</a>
+          </li>
+          <li>
+            <a href="/register">Register</a>
+          </li>
+          <li>
+            <a href="/sign-in">Login / Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="content-container">
+        <router-outlet></router-outlet>
+    </div>
+    <footer>
+      <section id="logo">
+        <!-- <img alt="logo" src="assets/img/Logo The_Offspring.png"/> -->
+      </section>
+      <section id="copyright">
+          <div>Copyright 2019 ™</div>
+        </section>
+    </footer>
   </section>
-  <section id="copyright">
-      <div>Copyright 2019 ™</div>
-    </section>
-</footer>
