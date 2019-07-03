@@ -17,6 +17,10 @@ const routes: Routes = [
     {
       path: '/activity/:id',
       component: ActivityItemComponent,
+    },
+    {
+      path: '/activity/',
+      component: ActivityItemComponent,
     }
 ];
 
