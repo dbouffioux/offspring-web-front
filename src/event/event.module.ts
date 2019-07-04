@@ -10,8 +10,8 @@ import { EventService } from './services/event.service';
 import { EventItemComponent } from './component/event-item/event-item.component';
 import { ActivityItemComponent } from './component/activity-item/activity-item.component';
 import { ActivityListComponent } from './component/activity-list/activity-list.component';
-import { CreateActivityFormComponent } from './container/createActivityForm/createActivityForm.component';
 import { CreateEventFormComponent } from './component/create-event-form/create-event-form.component';
+import { CreateActivityFormComponent } from './component/create-activity-form/create-activity-form.component';
 
 @NgModule({
   imports: [

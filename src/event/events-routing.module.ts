@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventComponent } from './container/event/event.component';
 import { EventItemComponent } from './component/event-item/event-item.component';
 import { ActivityItemComponent } from './component/activity-item/activity-item.component';
-import { CreateActivityFormComponent } from './container/createActivityForm/createActivityForm.component';
+import { CreateActivityFormComponent } from './component/create-activity-form/create-activity-form.component';
 
 const routes: Routes = [
     {
