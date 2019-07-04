@@ -29,4 +29,10 @@ export class AuthenticationService {
   public getLoggedInUser() {
     localStorage.getItem('id');
   }
+
+  public isLoggedIn() {
+    let logged: boolean;
+    this.getLoggedInUser !== undefined ? logged = true : logged = false;
+    return logged;
+  }
 }
