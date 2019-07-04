@@ -8,14 +8,14 @@
     <p>fin: {{ activity.dateFin.year }}/{{ activity.dateFin.monthValue }}/{{ activity.dateFin.dayOfMonth  }}
 
     </p>
+    <h4>Participants</h4>
+    <div class="list" [hidden]="!activity.participants">
+        <ul>
+            <li *ngFor="let person of activity.participants">
+              {{ person.firstName }}
+            </li>
+        </ul>
+    </div>
   </div>
-  <hr>
-  <h4>Participants</h4>
-  <div class="list" [hidden]="!activity.participants">
-      <ul>
-          <li *ngFor="let person of activity.participants">
-            {{ person.firstName }}
-          </li>
-      </ul>
-  </div>
+
 </div>
