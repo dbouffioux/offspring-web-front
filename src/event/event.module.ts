@@ -11,6 +11,8 @@ import { EventItemComponent } from './component/event-item/event-item.component'
 import { ActivityItemComponent } from './component/activity-item/activity-item.component';
 import { ActivityListComponent } from './component/activity-list/activity-list.component';
 import { CreateActivityFormComponent } from './container/createActivityForm/createActivityForm.component';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
+
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { CreateActivityFormComponent } from './container/createActivityForm/crea
     EventItemComponent,
     ActivityItemComponent,
     ActivityListComponent,
-    CreateActivityFormComponent
+    CreateActivityFormComponent,
+    DatePickerModule
   ],
   providers: [
     ActivityService,

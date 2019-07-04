@@ -1,3 +1,17 @@
-<p>
-  createActivityForm works!
-</p>
+<form (ngSubmit)="submitForm()" [formGroup]="form">
+  <h2>Connection</h2>
+  <div [hidden]="!error" class="error">{{ error }}</div>
+<div>
+  <label>Name : </label>
+  <input id="name" name="name" formControlName="name" />
+</div>
+<ejs-datepicker></ejs-datepicker>
+<div>
+  <label>Mot de passe : </label>
+  <input id="pwd" name="pwd" formControlName="password" />
+  <br>
+</div>
+
+  <input type="submit" [disabled]="!form.valid" value="Valider" class="submit">
+  <br>
+</form>
