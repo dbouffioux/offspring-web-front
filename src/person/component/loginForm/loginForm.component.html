@@ -1,20 +1,21 @@
-<form class="form" (ngSubmit)="submitForm()" [formGroup]="form">
-  <h2>Connection</h2>
-  <div [hidden]="!error" class="error">{{ error }}</div>
-  <div [hidden]="hide">
-    <div>
-      <label>Email : </label>
-      <input id="email" name="email" formControlName="email" />
-    </div>
-    <div>
-      <label>Mot de passe : </label>
-      <input id="pwd" name="pwd" formControlName="password" />
+<div>
+ <form class="form" (ngSubmit)="submitForm()" [formGroup]="form">
+    <h2>Connection</h2>
+    <div [hidden]="hide">
+      <div [hidden]="!error" class="error">{{ error }}</div>
+      <div class="form-element">
+        <label class="label" class="label" for="email">Email: </label>
+        <input id="email" type="text" name="email" formControlName="email" />
+      </div>
+      <div class="form-element">
+        <label class="label" class="label" for="password">Mot de passe : </label>
+        <input type="password" id="password" name="password" formControlName="password" />
+      </div>
+      <input class="submit" type="submit" [disabled]="!form.valid" value="Valider" class="submit">
       <br>
     </div>
-    <input class="submit" type="submit" [disabled]="!form.valid" value="Valider" class="submit">
-    <br>
-  </div>
-  <div class="message" [hidden]="!hide">
-    Vous êtes déjà connecté !
-  </div>
-</form>
+    <div class="message" [hidden]="!hide">
+      Vous êtes déjà connecté !
+    </div>
+  </form>
+</div>
