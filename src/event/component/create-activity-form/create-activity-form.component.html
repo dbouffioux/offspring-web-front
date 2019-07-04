@@ -6,6 +6,12 @@
       <div class="error-form" *ngIf="hasNameError()">Requis !</div><br>
   </div>
 
+  <select name="event" id="event" formControlName="event">
+    <option *ngFor="let event of events"></option>
+  </select>
+
+  {{ events| async| json}}
+
   <div class="form-element">
     <label for="dateDebut">Date début: </label>
     <input type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
