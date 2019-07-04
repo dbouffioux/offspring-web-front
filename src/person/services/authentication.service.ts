@@ -9,10 +9,24 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   constructor(private http: HttpClient){ }
+
   public testLog(payload: Log): Observable<Log> {
     return this.http
       .post<Log>(`${environment.baseUrl}login`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
+
+  public setLoggedInUser(id: number) {
+    localStorage.setItem('id', id.toString());
+  }
+
+  public removeLoggedInUser() {
+    localStorage.removeItem('id');
+  }
+
+  public getLoggedInUser() {
+    localStorage.getItem('id');
   }
 }

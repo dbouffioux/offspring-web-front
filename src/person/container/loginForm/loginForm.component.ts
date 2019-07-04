@@ -33,6 +33,8 @@ export class LoginFormComponent implements OnInit {
       this.res = res;
       if (this.res.error !== undefined) {
         this.error = this.res.error;
+      }else if (this.res.id !== undefined) {
+        this.authenticationService.setLoggedInUser(this.res.id);
       }
     });
   }

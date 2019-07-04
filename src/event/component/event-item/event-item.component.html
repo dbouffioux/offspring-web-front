@@ -1,6 +1,8 @@
-<p>
+<div>
   Evènement {{ event.name }}
-  <app-activity-list
-    [activities]="event.listActivity"
-  ></app-activity-list>
-</p>
+  <div [hidden]="!event.listActivity">
+    <app-activity-list
+      [activities]="event.listActivity"
+    ></app-activity-list>
+  </div>
+</div>
