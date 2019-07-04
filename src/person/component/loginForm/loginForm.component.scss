@@ -1,0 +1,43 @@
+@import '../../../assets/style/form.scss';
+
+.form {
+  text-align: center;
+  background-color: #6b5b95e6;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 4px;
+  .submit {
+    border-radius: 2px;
+    padding: 15px;
+    width: 150px;
+    background-color: white;
+    border:none;
+    margin-top: 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+  }
+  .form-element{
+    color: white;
+    margin: 10px;
+    label{
+      width: 100px;
+      display: inline-block;
+      text-align: left;
+      padding-right: 6px;
+    }
+    input {
+      padding: 5px 10px;
+      margin: 4px;
+
+    }
+    .error-form{
+
+    }
+  }
+  .error{
+    background-color: red;
+    color: white;
+    padding: 15px 25px;
+  }
+}

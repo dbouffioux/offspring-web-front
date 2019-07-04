@@ -1,7 +1,24 @@
-<ul>
-  <li *ngFor="let event of events">
-    <app-event-item
-      [event]="event"
-    ></app-event-item>
-  </li>
-</ul>
+<h1>Evenements</h1>
+<div class="list">
+    <ul>
+        <li *ngFor="let event of events">
+          <app-event-item
+            [event]="event"
+          ></app-event-item>
+        </li>
+      </ul>
+</div>
+<br><br>
+<h2>Ajouter un événement</h2>
+<div [hidden]="!showCreateButton">
+  <app-create-event-form></app-create-event-form>
+</div>
+<div [hidden]="showCreateButton">
+  <div class="message">
+    <p>Pour créer un évènement, veuillez vous connecter :</p>
+    <div>
+      <a class="link" [routerLink]="['/person/login']">Login</a>
+    </div>
+  </div>
+</div>
+

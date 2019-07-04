@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitForm()" [formGroup]="form">
+<form class="form" (ngSubmit)="submitForm()" [formGroup]="form">
   <h2>Connection</h2>
   <div [hidden]="!error" class="error">{{ error }}</div>
   <div [hidden]="hide">
@@ -11,10 +11,10 @@
       <input id="pwd" name="pwd" formControlName="password" />
       <br>
     </div>
-    <input type="submit" [disabled]="!form.valid" value="Valider" class="submit">
+    <input class="submit" type="submit" [disabled]="!form.valid" value="Valider" class="submit">
     <br>
   </div>
-  <div [hidden]="!hide">
+  <div class="message" [hidden]="!hide">
     Vous êtes déjà connecté !
   </div>
 </form>
