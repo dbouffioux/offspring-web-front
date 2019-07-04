@@ -1,5 +1,6 @@
 <h1>Evenements</h1>
-<div class="list">
+<div class="list left">
+  <h2>Liste des événements</h2>
     <ul>
         <li *ngFor="let event of events">
           <app-event-item
@@ -8,16 +9,17 @@
         </li>
       </ul>
 </div>
-<br><br>
-<h2>Ajouter un événement</h2>
-<div [hidden]="!showCreateButton">
-  <app-create-event-form></app-create-event-form>
-</div>
-<div [hidden]="showCreateButton">
-  <div class="message">
-    <p>Pour créer un évènement, veuillez vous connecter :</p>
-    <div>
-      <a class="link" [routerLink]="['/person/login']">Login</a>
+<div class="create right">
+  <h2>Ajouter un événement</h2>
+  <div [hidden]="!showCreateButton">
+    <app-create-event-form></app-create-event-form>
+  </div>
+  <div [hidden]="showCreateButton">
+    <div class="message">
+      <p>Pour créer un évènement, veuillez vous connecter :</p>
+      <div>
+        <a class="link" [routerLink]="['/person/login']">Login</a>
+      </div>
     </div>
   </div>
 </div>
