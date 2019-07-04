@@ -1,6 +1,17 @@
 <div>
-  {{ activity.name }}
-  <div [hidden]="!activity.participants">
+  <h2>Activité : {{ activity.name }}</h2>
+  <div div class="info">
+    <h4>Date</h4>
+    <p>début: {{ activity.dateDebut.year }}/{{activity.dateDebut.monthValue }}/{{  activity.dateDebut.dayOfMonth  }}
+
+    </p>
+    <p>fin: {{ activity.dateFin.year }}/{{ activity.dateFin.monthValue }}/{{ activity.dateFin.dayOfMonth  }}
+
+    </p>
+  </div>
+  <hr>
+  <h4>Participants</h4>
+  <div class="list" [hidden]="!activity.participants">
       <ul>
           <li *ngFor="let person of activity.participants">
             {{ person.firstName }}

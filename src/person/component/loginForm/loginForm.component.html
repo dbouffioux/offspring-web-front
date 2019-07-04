@@ -1,0 +1,20 @@
+<form class="form" (ngSubmit)="submitForm()" [formGroup]="form">
+  <h2>Connection</h2>
+  <div [hidden]="!error" class="error">{{ error }}</div>
+  <div [hidden]="hide">
+    <div>
+      <label>Email : </label>
+      <input id="email" name="email" formControlName="email" />
+    </div>
+    <div>
+      <label>Mot de passe : </label>
+      <input id="pwd" name="pwd" formControlName="password" />
+      <br>
+    </div>
+    <input class="submit" type="submit" [disabled]="!form.valid" value="Valider" class="submit">
+    <br>
+  </div>
+  <div class="message" [hidden]="!hide">
+    Vous êtes déjà connecté !
+  </div>
+</form>

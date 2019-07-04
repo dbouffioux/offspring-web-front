@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Log } from '../../models/log';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginForm',
@@ -14,8 +15,12 @@ export class LoginFormComponent implements OnInit {
   public log: Log;
   public form: FormGroup;
   public error?: string;
+  public hide: boolean;
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) {
+  constructor(
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router) {
     this.log = new Log();
 
     this.form = this.fb.group({
@@ -33,8 +38,9 @@ export class LoginFormComponent implements OnInit {
       this.res = res;
       if (this.res.error !== undefined) {
         this.error = this.res.error;
-      }else if (this.res.id !== undefined) {
+      } else if (this.res.id !== undefined) {
         this.authenticationService.setLoggedInUser(this.res.id);
+        this.router.navigate(['/']);
       }
     });
   }
@@ -45,6 +51,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.hide = this.authenticationService.isLoggedIn();
   }
-
 }

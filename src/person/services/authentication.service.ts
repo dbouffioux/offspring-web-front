@@ -27,6 +27,12 @@ export class AuthenticationService {
   }
 
   public getLoggedInUser() {
-    localStorage.getItem('id');
+    return localStorage.getItem('id');
+  }
+
+  public isLoggedIn() {
+    let logged: boolean;
+    this.getLoggedInUser() !== null ? logged = true : logged = false;
+    return logged;
   }
 }
