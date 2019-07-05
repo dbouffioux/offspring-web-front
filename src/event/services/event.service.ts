@@ -31,7 +31,7 @@ export class EventService {
 
   public createEvent(payload: Event): Observable<Event[]> {
     return this.http
-      .post<Event[]>(`${environment.baseUrl}event`, payload)
+      .post<Event[]>(`${environment.baseUrl}createEvent`, payload)
       .pipe(
         catchError((error: any) => throwError(error.json()))
       );
