@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PersonModule } from '../person/person.module';
+import { ParticlesModule } from 'angular-particle';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PersonModule } from '../person/person.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PersonModule
+    PersonModule,
+    ParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
