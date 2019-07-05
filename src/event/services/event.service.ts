@@ -15,6 +15,8 @@ export class EventService {
   public getEvents(): Observable<Event[]> {
     return this.http
       .get<Event[]>(`${environment.baseUrl}event`)
-      .pipe(catchError((error: any) => throwError(error.json())));
+      .pipe(
+        catchError((error: any) => throwError(error.json()))
+      );
   }
 }

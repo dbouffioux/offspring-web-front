@@ -1,40 +1,40 @@
-<form class="form" [formGroup]="createEventForm" (ngSubmit)="onSubmit(createEventForm)">
+<form class="form" [formGroup]="createActivityForm" (ngSubmit)="onSubmit(createActivityForm)">
 
   <div class="form-element">
       <label for="name">Nom: </label>
       <input type="text" id="name" name="name" formControlName="name"/><br>
-      <div class="error-form" *ngIf="hasNameError()">Requis !</div><br>
-  </div>
+<!--       <div class="error-form" *ngIf="hasNameError()">Requis !</div><br> -->
+ </div>
 
   <select name="event" id="event" formControlName="event">
-    <option *ngFor="let event of events"></option>
+    <option value="{{ event.id }}" *ngFor="let event of events"> {{ event.name }}</option>
   </select>
 
-  {{ events| async| json}}
 
   <div class="form-element">
     <label for="dateDebut">Date début: </label>
     <input type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
-    <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
-  </div>
+<!--     <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
+ -->  </div>
 
   <div class="form-element">
     <label for="dateFin">Date fin: </label>
     <input type="date" id="dateFin" name="dateFin" formControlName="dateFin"/><br>
-    <div class="error-form" *ngIf="hasDateFinError()">Requis !</div><br>
-  </div>
+<!--     <div class="error-form" *ngIf="hasDateFinError()">Requis !</div><br>
+ -->  </div>
 
   <div class="form-element">
     <label for="heureDebut">Heure début: </label>
     <input type="time" id="heureDebut" name="heureDebut" formControlName="heureDebut"/><br>
-    <div class="error-form" *ngIf="hasHeureDebutError()">Requis !</div><br>
-  </div>
+<!--     <div class="error-form" *ngIf="hasHeureDebutError()">Requis !</div><br>
+ -->  </div>
 
   <div class="form-element">
     <label for="heureFin">Heure fin:</label>
     <input type="time" id="heureFin" name="heureFin" formControlName="heureFin"/><br>
-    <div class="error-form" *ngIf="hasHeureFinError()">Requis !</div><br>
-  </div>
+<!--     <div class="error-form" *ngIf="hasHeureFinError()">Requis !</div><br>
+ -->  </div>
 
-  <input class="submit" type="submit" [disabled]="!createEventForm.valid" />
+<input class="submit" type="submit" />
+<!-- [disabled]="!createActivityForm.valid"  -->
 </form>
