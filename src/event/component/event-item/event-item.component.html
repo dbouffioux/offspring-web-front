@@ -1,5 +1,13 @@
-<div>
-  Evènement {{ event.name }}
+<div class="event-item">
+  <p></p>Evènement {{ event.name }}
+  <div class="management-buttons">
+    <a class="mini-link" [routerLink]="['/events/createActivity']">
+      + activité
+    </a>
+    <a class="mini-link" (click)="onRemove(event)">
+      delete
+    </a>
+  </div>
   <div *ngIf="event?.listActivity">
     <app-activity-list
       [activities]="event.listActivity"

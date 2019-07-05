@@ -58,6 +58,27 @@ body{
 }
 
 /* link styles */
+.event-item{
+  .management-buttons{
+    position: relative;
+    .mini-link{
+      padding: 3px 5px;
+      background-color: white;
+      color: grey;
+      width: auto;
+      position: absolute;
+      right: 0;
+      top: -32px;
+      &:hover{
+        background: #FF416C;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: white;
+      }
+    }
+  }
+}
+
 .link {
   color: white;
   font-size: 15px;
@@ -199,7 +220,7 @@ header{
       padding: 5px 10px;
       margin: 4px;
       float: left;
-      width: 100%;
+      width: 90%;
       height: 40px;
     }
     input[type=submit]{

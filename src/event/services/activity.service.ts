@@ -26,7 +26,6 @@ export class ActivityService {
   }
 
   public postActivity(payload: Activity): Observable<Activity> {
-    console.log(`${environment.baseUrl}createActivity`, payload);
     return this.http
       .post<Activity>(`${environment.baseUrl}createActivity`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
