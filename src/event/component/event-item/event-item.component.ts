@@ -27,11 +27,7 @@ export class EventItemComponent implements OnInit {
   }
 
   public onRemove(event: Event) {
-    this.eventService.deleteEvent(event);
+    this.eventService.deleteEvent(event).subscribe();
     this.router.navigate(['/']);
-  }
-
-  public onCreate(event: Event) {
-
   }
 }

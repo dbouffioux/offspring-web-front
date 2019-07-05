@@ -10,9 +10,7 @@ import { Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class EventService {
-  public params: HttpParams;
   constructor(private http: HttpClient) {
-    this.params = new HttpParams();
   }
 
   public getEvents(): Observable<Event[]> {
@@ -24,10 +22,16 @@ export class EventService {
   }
 
   public deleteEvent(event: Event): Observable<Event[]> {
-    this.params.set('id', event.id.toString());
-    const options = { params: this.params };
     return this.http
-      .delete<Event[]>(`${environment.baseUrl}event`, options)
+      .delete<Event[]>(`${environment.baseUrl}event/${event.id}`)
+      .pipe(
+        catchError((error: any) => throwError(error.json()))
+      );
+  }
+
+  public createEvent(payload: Event): Observable<Event[]> {
+    return this.http
+      .post<Event[]>(`${environment.baseUrl}event`, payload)
       .pipe(
         catchError((error: any) => throwError(error.json()))
       );
