@@ -42,10 +42,13 @@ export class ActivityItemComponent implements OnInit {
 
   }
 
-  public onRemove(event: Activity) {
+  public onRemove() {
 
     this.activityService.delete(this.activity.id).subscribe(
-
+      result => {
+        console.log(result);
+        // this.deleteResult = result.deleted;
+      }
     );
     this.router.navigate(['/']);
   }

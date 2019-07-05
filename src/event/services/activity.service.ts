@@ -18,17 +18,17 @@ export class ActivityService {
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 
-<<<<<<< HEAD
+
   public delete(id: string): Observable<Activity> {
     return this.http
       .delete<Activity>(`${environment.baseUrl}activity/${id}`)
       .pipe(catchError((error: any) => throwError(error.json())));
-=======
+  }
+
   public postActivity(payload: Activity): Observable<Activity> {
     console.log(`${environment.baseUrl}createActivity`, payload);
     return this.http
       .post<Activity>(`${environment.baseUrl}createActivity`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
->>>>>>> bf47b10645106365c7df26f311a59e3ed0b64cf2
   }
 }
