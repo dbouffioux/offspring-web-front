@@ -12,6 +12,10 @@
     <div *ngIf="canManage" class="management-buttons">
       <button (click)="onRemove(activity)">Supprimer</button>
     </div>
+    <div *ngIf="canManage" class="management-buttons">
+      <button >Modifier</button>
+    </div>
+
     <h4>Participants</h4>
     <div class="list" *ngIf="activity?.participants">
         <ul>

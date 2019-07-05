@@ -1,0 +1,41 @@
+<form class="form" [formGroup]="updateActivityForm" (ngSubmit)="onSubmit(updateActivityForm)">
+
+  <div class="form-element">
+      <label for="name">Nom: </label>
+      <input value = "{{ activity.name }}" type="text" id="name" name="name" formControlName="name"/><br>
+       <div class="error-form" *ngIf="hasNameError()">Requis !</div><br>
+ </div>
+ <div class="form-element">
+  <select name="event" id="event" formControlName="event">
+    <option value="{{ event.id }}" *ngFor="let event of events"> {{ event.name }}</option>
+    <div class="error-form" *ngIf="hasEventError()">Requis !</div><br>
+  </select>
+ </div>
+
+  <div class="form-element">
+    <label  for="dateDebut">Date début: </label>
+    <input value = "{{ activity.dateDebut }}" type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
+     <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
+   </div>
+
+  <div class="form-element">
+    <label for="dateFin">Date fin: </label>
+    <input value = "{{ activity.dateFin }}" type="date" id="dateFin" name="dateFin" formControlName="dateFin"/><br>
+     <div class="error-form" *ngIf="hasDateFinError()">Requis !</div><br>
+   </div>
+
+  <div class="form-element">
+    <label for="heureDebut">Heure début: </label>
+    <input value = "{{ activity.heureDebut }}" type="time" id="heureDebut" name="heureDebut" formControlName="heureDebut"/><br>
+     <div class="error-form" *ngIf="hasHeureDebutError()">Requis !</div><br>
+   </div>
+
+  <div class="form-element">
+    <label for="heureFin">Heure fin:</label>
+    <input value = "{{ activity.heureFin }}" type="time" id="heureFin" name="heureFin" formControlName="heureFin"/><br>
+     <div class="error-form" *ngIf="hasHeureFinError()">Requis !</div><br>
+   </div>
+
+<input class="submit" type="submit"  [disabled]="!createActivityForm.valid" />
+
+</form>
