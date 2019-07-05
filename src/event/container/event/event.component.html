@@ -11,12 +11,12 @@
 </div>
 <div class="create right">
   <h2>Ajouter un événement</h2>
-  <div [hidden]="!showCreateButton">
+  <div *ngIf="showCreateButton">
     <app-create-event-form></app-create-event-form>
   </div>
-  <div [hidden]="showCreateButton">
+  <div *ngIf="!showCreateButton">
     <div class="message">
-      <p>Pour créer un évènement, veuillez vous connecter :</p>
+      <p>Pour créer un évènement, veuillez vous connecter :</p><br>
       <div>
         <a class="link" [routerLink]="['/person/login']">Login</a>
       </div>

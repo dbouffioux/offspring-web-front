@@ -1,6 +1,6 @@
 <div>
   Evènement {{ event.name }}
-  <div [hidden]="!event.listActivity">
+  <div *ngIf="event?.listActivity">
     <app-activity-list
       [activities]="event.listActivity"
     ></app-activity-list>

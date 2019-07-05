@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/event/models/activity.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActivityService } from 'src/event/services/activity.service';
+import { AuthenticationService } from 'src/person/services/authentication.service';
 
 @Component({
   selector: 'app-activity-item',
@@ -11,10 +12,14 @@ import { ActivityService } from 'src/event/services/activity.service';
 export class ActivityItemComponent implements OnInit {
 
   public activity: any;
+  public canManage: boolean;
+  public deleteResult = false;
 
   constructor(
     private route: ActivatedRoute,
-    private activityService: ActivityService
+    private activityService: ActivityService,
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
@@ -23,12 +28,14 @@ export class ActivityItemComponent implements OnInit {
       this.activityService.getActivities().subscribe(
         activities => {
           this.activity = activities.find(activity => activity.id.toString() === id);
+          this.canManage = this.authenticationService.isOwner(this.activity.creator.id);
         }
       );
     });
   }
 
   public onEdit(event: Activity) {
+
   }
 
   public onUpdate(event: Activity) {
@@ -37,6 +44,10 @@ export class ActivityItemComponent implements OnInit {
 
   public onRemove(event: Activity) {
 
+    this.activityService.delete(this.activity.id).subscribe(
+
+    );
+    this.router.navigate(['/']);
   }
 
   public onCreate(event: Activity) {

@@ -35,4 +35,8 @@ export class AuthenticationService {
     this.getLoggedInUser() !== null ? logged = true : logged = false;
     return logged;
   }
+
+  public isOwner(id: number) {
+    return this.getLoggedInUser() === id.toString();
+  }
 }

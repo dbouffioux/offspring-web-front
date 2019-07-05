@@ -17,4 +17,10 @@ export class ActivityService {
       .get<Activity[]>(`${environment.baseUrl}activity`)
       .pipe(catchError((error: any) => throwError(error.json())));
   }
+
+  public delete(id: string): Observable<Activity> {
+    return this.http
+      .delete<Activity>(`${environment.baseUrl}activity/${id}`)
+      .pipe(catchError((error: any) => throwError(error.json())));
+  }
 }

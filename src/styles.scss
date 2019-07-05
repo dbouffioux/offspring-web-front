@@ -29,16 +29,36 @@ body{
   }
 
   .info {
+    position: relative;
     background-color:rgba(50, 50, 50, 0.8);
     font-size: 15px;
     padding: 10px 50px;
     color: white;
+    .management-buttons{
+      position: absolute;
+      top:  10px;
+      right: 10px;
+      button{
+        border: none;
+        padding: 10px;
+        background-color: white;
+        color:  grey;
+        cursor: pointer;
+        border: 2px solid white;
+        &:hover{
+          background: #FF416C;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to right, #FF4B2B, #FF416C);
+          color: white;
+          border: 2px solid white;
+        }
+      }
+    }
   }
 }
 
 /* link styles */
-
-.link{
+.link {
   color: white;
   font-size: 15px;
   text-decoration: none;
@@ -48,7 +68,6 @@ body{
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   margin-left: 20px;
   width: 200px;
@@ -66,13 +85,11 @@ body{
   background-color: whitesmoke;
   padding: 20px 30px;
   color: grey;
-  width: 400px;
-  margin: 0 auto;
   div{
-    margin: 0 auto;
+    margin: 20px auto;
     width: 100px;
     a{
-      margin: 10px auto;
+      margin: 10px;
     }
   }
 }
@@ -182,7 +199,7 @@ header{
       padding: 5px 10px;
       margin: 4px;
       float: left;
-      width: 70%;
+      width: 100%;
       height: 40px;
     }
     input[type=submit]{
@@ -218,7 +235,7 @@ header{
 footer{
   clear: both;
   height: 10vh;
-  padding: 150px 200px;
+  padding: 100px 200px;
   margin-top: 50px;
   background-color: #6b5b95;
   color: white;
