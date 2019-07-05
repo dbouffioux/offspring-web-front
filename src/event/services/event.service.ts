@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
 
@@ -10,11 +10,25 @@ import { Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class EventService {
-  constructor(private http: HttpClient) {}
+  public params: HttpParams;
+  constructor(private http: HttpClient) {
+    this.params = new HttpParams();
+  }
 
   public getEvents(): Observable<Event[]> {
     return this.http
       .get<Event[]>(`${environment.baseUrl}event`)
+      .pipe(
+        catchError((error: any) => throwError(error.json()))
+      );
+  }
+
+  public deleteEvent(event: Event): Observable<Event[]> {
+    this.params.set('id', event.id.toString());
+    console.log(this.params.updates[0]);
+    const options = { params: this.params };
+    return this.http
+      .delete<Event[]>(`${environment.baseUrl}event`, options)
       .pipe(
         catchError((error: any) => throwError(error.json()))
       );

@@ -18,7 +18,6 @@ export class ActivityService {
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 
-
   public delete(id: string): Observable<Activity> {
     return this.http
       .delete<Activity>(`${environment.baseUrl}activity/${id}`)
@@ -26,7 +25,6 @@ export class ActivityService {
   }
 
   public postActivity(payload: Activity): Observable<Activity> {
-    console.log(`${environment.baseUrl}createActivity`, payload);
     return this.http
       .post<Activity>(`${environment.baseUrl}createActivity`, payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
