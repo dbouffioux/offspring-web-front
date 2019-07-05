@@ -30,8 +30,4 @@ export class EventItemComponent implements OnInit {
     this.eventService.deleteEvent(event).subscribe();
     this.router.navigate(['/']);
   }
-
-  public onCreate(event: Event) {
-
-  }
 }

@@ -29,10 +29,11 @@ export class EventService {
       );
   }
 
-  public createEvent(payload, Event): Observable<Event[]> {
+  public createEvent(payload: Event): Observable<Event[]> {
     return this.http
       .post<Event[]>(`${environment.baseUrl}event`, payload)
       .pipe(
         catchError((error: any) => throwError(error.json()))
       );
+  }
 }
