@@ -66,12 +66,12 @@ export class CreateEventFormComponent implements OnInit {
     newEvent.name = newValues.name;
     newEvent.dateDebut = newValues.dateDebut;
     newEvent.dateFin = newValues.dateFin;
-    newEvent.heureDebut = newValues.heureDebut;
-    newEvent.heureFin = newValues.heureFin;
+    newEvent.heureDebut = newValues.heureDebut + ':00';
+    newEvent.heureFin = newValues.heureFin + ':00';
     newEvent.creatorId = this.authService.getLoggedInUser();
 
     this.event = newEvent;
-    this.eventService.createEvent(this.event);
+    this.eventService.createEvent(this.event).subscribe();
 
     this.router.navigate(['/']);
   }
