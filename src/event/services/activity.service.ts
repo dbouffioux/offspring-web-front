@@ -18,7 +18,6 @@ export class ActivityService {
       .pipe(catchError((error: any) => throwError(error.json())));
   }
 
-
   public delete(id: string): Observable<Activity> {
     return this.http
       .delete<Activity>(`${environment.baseUrl}activity/${id}`)

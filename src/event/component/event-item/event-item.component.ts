@@ -13,7 +13,7 @@ export class EventItemComponent implements OnInit {
 
   @Input() event: any;
 
-  constructor(private eventService: EventService,private router: Router,) { }
+  constructor(private eventService: EventService, private router: Router) { }
 
   ngOnInit() {
   }

@@ -61,20 +61,27 @@ body{
 .event-item{
   .management-buttons{
     position: relative;
-    .mini-link{
+    .mini-link-add,
+    .mini-link-delete{
       padding: 3px 5px;
       background-color: white;
       color: grey;
       width: auto;
       position: absolute;
-      right: 0;
       top: -32px;
+      cursor: pointer;
       &:hover{
         background: #FF416C;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         color: white;
       }
+    }
+    .mini-link-add{
+      right: 50px;
+    }
+    .mini-link-delete{
+      right: 0;
     }
   }
 }

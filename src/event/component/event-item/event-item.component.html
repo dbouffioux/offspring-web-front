@@ -1,10 +1,10 @@
 <div class="event-item">
   <p></p>Evènement {{ event.name }}
   <div class="management-buttons">
-    <a class="mini-link" [routerLink]="['/events/createActivity']">
+    <a class="mini-link-add" [routerLink]="['/events/createActivity']">
       + activité
     </a>
-    <a class="mini-link" (click)="onRemove(event)">
+    <a class="mini-link-delete" (click)="onRemove(event)">
       delete
     </a>
   </div>
