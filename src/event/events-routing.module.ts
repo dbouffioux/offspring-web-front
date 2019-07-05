@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { EventComponent } from './container/event/event.component';
-import { EventItemComponent } from './component/event-item/event-item.component';
 import { ActivityItemComponent } from './component/activity-item/activity-item.component';
 import { CreateActivityFormComponent } from './component/create-activity-form/create-activity-form.component';
+import { UpdateActivityFormComponent } from './component/update-activity-form/update-activity-form.component';
 
 const routes: Routes = [
     {
@@ -18,6 +18,10 @@ const routes: Routes = [
     {
       path: ':createActivity',
       component: CreateActivityFormComponent,
+    },
+     {
+      path: 'update-activity/:id',
+      component: UpdateActivityFormComponent,
     },
     {
       path: 'activity/:id',

@@ -25,7 +25,6 @@ export class EventService {
 
   public deleteEvent(event: Event): Observable<Event[]> {
     this.params.set('id', event.id.toString());
-    console.log(this.params.updates[0]);
     const options = { params: this.params };
     return this.http
       .delete<Event[]>(`${environment.baseUrl}event`, options)

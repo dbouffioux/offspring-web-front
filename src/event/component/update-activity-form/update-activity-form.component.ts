@@ -45,15 +45,6 @@ export class UpdateActivityFormComponent implements OnInit {
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
     console.log('Submit : ' + this.activity.name);
-/*     result.subscribe(res => {
-      this.res = res;
-      if (this.res.error !== undefined) {
-        this.error = this.res.error;
-      } else if (this.res.id !== undefined) {
-        this.authenticationService.setLoggedInUser(this.res.id);
-        this.router.navigate(['/']);
-      }
-    }); */
   }
 
   hasNameError() {
