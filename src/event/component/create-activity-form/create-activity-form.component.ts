@@ -9,7 +9,7 @@ import { AuthenticationService } from '../../../person/services/authentication.s
 @Component({
   selector: 'app-create-activity-form',
   templateUrl: './create-activity-form.component.html',
-  styleUrls: ['./create-activity-form.component.css']
+  styleUrls: ['./create-activity-form.component.scss']
 })
 export class CreateActivityFormComponent implements OnInit {
 
@@ -54,6 +54,36 @@ export class CreateActivityFormComponent implements OnInit {
         this.router.navigate(['/']);
       }
     }); */
+  }
+
+  hasNameError() {
+    const control = this.createActivityForm.get('name');
+    return control.errors && control.errors.required;
+  }
+
+  hasDateDebutError() {
+    const control = this.createActivityForm.get('dateDebut');
+    return control.errors && control.errors.required;
+  }
+
+  hasDateFinError() {
+    const control = this.createActivityForm.get('dateFin');
+    return control.errors && control.errors.required;
+  }
+
+  hasHeureDebutError() {
+    const control = this.createActivityForm.get('heureDebut');
+    return control.errors && control.errors.required;
+  }
+
+  hasHeureFinError() {
+    const control = this.createActivityForm.get('heureFin');
+    return control.errors && control.errors.required;
+  }
+
+  hasEventError() {
+    const control = this.createActivityForm.get('event');
+    return control.errors && control.errors.required;
   }
 
   ngOnInit() {

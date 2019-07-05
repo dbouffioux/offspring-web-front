@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Event } from 'src/event/models/event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event-form',
@@ -12,7 +13,7 @@ export class CreateEventFormComponent implements OnInit {
   public event: Event;
   public createEventForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder) {
     this.event = new Event();
     this.createEventForm = this.fb.group({
       name: this.fb.control(this.event.name, [Validators.required]),
@@ -62,5 +63,7 @@ export class CreateEventFormComponent implements OnInit {
     newEvent.heureFin = newValues.heureFin;
 
     this.event = newEvent;
+
+    this.router.navigate(['/']);
   }
 }
