@@ -14,10 +14,10 @@
 
   <div class = "form-element">
     <label  for="dateDebut">Date début: </label>
-    <input value = "{{ activity.dateDebut }}" type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
+    <input value = "{{ activity.dateDebut | date: 'yyyy-mm-dd'  }}" type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
      <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
    </div>
-
+   {{ activity.dateDebut | date: 'yyyy-mm-dd'  }}
   <div class="form-element">
     <label for="dateFin">Date fin: </label>
     <input value = "{{ activity.dateFin }}" type="date" id="dateFin" name="dateFin" formControlName="dateFin"/><br>
@@ -26,7 +26,7 @@
 
   <div class="form-element">
     <label for="heureDebut">Heure début: </label>
-    <input value = "{{ activity.heureDebut }}" type="time" id="heureDebut" name="heureDebut" formControlName="heureDebut"/><br>
+    <input value = "{{ activity.heureDebut | date:'mm:ss' }}" type="time" id="heureDebut" name="heureDebut" formControlName="heureDebut"/><br>
      <div class="error-form" *ngIf="hasHeureDebutError()">Requis !</div><br>
    </div>
 

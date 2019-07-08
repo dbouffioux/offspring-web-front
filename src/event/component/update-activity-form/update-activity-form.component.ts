@@ -5,6 +5,8 @@ import { AuthenticationService } from '../../../person/services/authentication.s
 import { ActivityService } from '../../services/activity.service';
 import { Activity } from '../../models/activity.model';
 import { Event } from '../../models/event.model';
+import { ActivatedRoute } from '@angular/router';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-update-activity-form',
@@ -16,8 +18,9 @@ export class UpdateActivityFormComponent implements OnInit {
   public events: Event[];
   public activity: Activity;
   public createActivityForm: FormGroup;
+  public canManage: boolean;
 
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private route: ActivatedRoute, private authenticationService: AuthenticationService,
               private eventService: EventService, private fb: FormBuilder, private activityService: ActivityService) {
     this.activity = new Activity();
     this.createActivityForm = this.fb.group({
@@ -45,6 +48,24 @@ export class UpdateActivityFormComponent implements OnInit {
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
     console.log('Submit : ' + this.activity.name);
+  }
+
+  ngOnInit() {
+    const now = new Date(Date.now());
+    const val = this.createActivityForm.value;
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
+    });
+    this.route.params.subscribe(params => {
+      const id: string = params.id;
+      this.activityService.getActivities().subscribe(
+        activities => {
+          this.activity = activities.find(activity => activity.id.toString() === id);
+          this.canManage = this.authenticationService.isOwner(Number(this.activity.creatorId));
+        }
+      );
+    });
+    console.log(this.activity.dateDebut);
   }
 
   hasNameError() {
@@ -75,12 +96,6 @@ export class UpdateActivityFormComponent implements OnInit {
   hasEventError() {
     const control = this.createActivityForm.get('event');
     return control.errors && control.errors.required;
-  }
-
-  ngOnInit() {
-    this.eventService.getEvents().subscribe(events => {
-      this.events = events;
-    });
   }
 
 }
