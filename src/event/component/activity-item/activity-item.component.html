@@ -12,13 +12,19 @@
     <div *ngIf="canManage" class="management-buttons">
       <button (click)="onRemove(activity)">Supprimer</button>
     </div>
+    <div *ngIf="canManage" class="management-buttons">
+      <a [routerLink]="['/events/update-activity', activity.id]">
+        <button>Modifier</button>
+      </a>
+    </div>
+
     <h4>Participants</h4>
     <div class="list" *ngIf="activity?.participants">
-        <ul>
-            <li *ngFor="let person of activity?.participants">
-              {{ person.firstName }}
-            </li>
-        </ul>
+      <ul>
+        <li *ngFor="let person of activity?.participants">
+          {{ person.firstName }}
+        </li>
+      </ul>
     </div>
       <button>SUBSCRIBE</button>
       1. faire un composant avec le LOGIN si on veut s'inscrire<br>

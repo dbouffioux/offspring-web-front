@@ -12,6 +12,7 @@ import { ActivityItemComponent } from './component/activity-item/activity-item.c
 import { ActivityListComponent } from './component/activity-list/activity-list.component';
 import { CreateEventFormComponent } from './component/create-event-form/create-event-form.component';
 import { CreateActivityFormComponent } from './component/create-activity-form/create-activity-form.component';
+import { UpdateActivityFormComponent } from './component/update-activity-form/update-activity-form.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { CreateActivityFormComponent } from './component/create-activity-form/cr
     ActivityItemComponent,
     ActivityListComponent,
     CreateActivityFormComponent,
-    CreateEventFormComponent
+    CreateEventFormComponent,
+    UpdateActivityFormComponent
   ],
   providers: [
     ActivityService,
