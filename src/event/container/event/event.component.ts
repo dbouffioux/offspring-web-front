@@ -14,7 +14,8 @@ export class EventComponent implements OnInit {
   public showCreateButton: boolean;
   constructor(
     private eventService: EventService,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService
+    ) { }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(events => this.events = events);

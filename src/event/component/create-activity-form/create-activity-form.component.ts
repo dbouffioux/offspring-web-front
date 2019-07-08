@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Activity } from 'src/event/models/activity.model';
 import { ActivityService } from '../../services/activity.service';
 import { AuthenticationService } from '../../../person/services/authentication.service';
+import DateUtilsComponent from 'src/app/utils/DateUtilsComponent';
 
 @Component({
   selector: 'app-create-activity-form',
@@ -14,20 +15,31 @@ import { AuthenticationService } from '../../../person/services/authentication.s
 export class CreateActivityFormComponent implements OnInit {
 
   public events: Event[];
+  public event: Event;
   public activity: Activity;
   public createActivityForm: FormGroup;
+  public dateMin: string;
+  public dateMax: string;
+  public heureMin: string;
+  public heureMax: string;
 
-  constructor(private authenticationService: AuthenticationService,
-    private eventService: EventService, private fb: FormBuilder, private activityService: ActivityService) {
+  constructor(
+    private authenticationService: AuthenticationService,
+    private eventService: EventService,
+    private fb: FormBuilder,
+    private activityService: ActivityService) {
+
     this.activity = new Activity();
     this.createActivityForm = this.fb.group({
-      name: this.fb.control(this.activity.name, [Validators.required]),
-      event: this.fb.control(this.activity.eventId, [Validators.required]),
-      dateDebut: this.fb.control(this.activity.dateDebut, [Validators.required]),
-      dateFin: this.fb.control(this.activity.dateFin, [Validators.required]),
-      heureDebut: this.fb.control(this.activity.heureDebut, [Validators.required]),
-      heureFin: this.fb.control(this.activity.heureFin, [Validators.required]),
+      name: this.fb.control('', [Validators.required]),
+      event: this.fb.control('', [Validators.required]),
+      dateDebut: this.fb.control('', [Validators.required]),
+      dateFin: this.fb.control('', [Validators.required]),
+      heureDebut: this.fb.control('', [Validators.required]),
+      heureFin: this.fb.control('', [Validators.required]),
     });
+
+    this.createActivityForm.get('event').valueChanges.subscribe(event => this.onEventChange(event));
   }
 
   public onSubmit() {
@@ -40,11 +52,10 @@ export class CreateActivityFormComponent implements OnInit {
     this.activity.heureFin = val.heureFin + ':00';
     this.activity.creatorId = this.authenticationService.getLoggedInUser();
 
-    console.log(this.authenticationService.getLoggedInUser());
-
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
-/*     result.subscribe(res => {
+    /*
+    result.subscribe(res => {
       this.res = res;
       if (this.res.error !== undefined) {
         this.error = this.res.error;
@@ -52,7 +63,32 @@ export class CreateActivityFormComponent implements OnInit {
         this.authenticationService.setLoggedInUser(this.res.id);
         this.router.navigate(['/']);
       }
-    }); */
+    });
+    */
+  }
+
+  // watch for event change
+  onEventChange(eventId: any) {
+    // get event selected if event valid
+    if (!eventId.isNan) {
+      this.eventService.getEventById(eventId).subscribe(
+        event => {
+          this.event = event;
+          this.dateMin = DateUtilsComponent.formatDateToStringDate(
+              DateUtilsComponent.createDateFromParams(event.start) // error because Event has no 'start' field .. but thats what api
+            );
+          this.dateMax = DateUtilsComponent.formatDateToStringDate(
+              DateUtilsComponent.createDateFromParams(event.end)
+            );
+          this.heureMin = DateUtilsComponent.formatDateToStringTime(
+              DateUtilsComponent.createDateFromParams(event.start)
+            );
+          this.heureMax = DateUtilsComponent.formatDateToStringTime(
+            DateUtilsComponent.createDateFromParams(event.end)
+          );
+        }
+      );
+    }
   }
 
   hasNameError() {
@@ -90,5 +126,4 @@ export class CreateActivityFormComponent implements OnInit {
       this.events = events;
     });
   }
-
 }

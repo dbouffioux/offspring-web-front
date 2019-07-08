@@ -36,4 +36,12 @@ export class EventService {
         catchError((error: any) => throwError(error.json()))
       );
   }
+
+  public getEventById(id: number): Observable<Event> {
+    return this.http
+      .get<Event>(`${environment.baseUrl}event/${id}`)
+      .pipe(
+        catchError((error: any) => throwError(error.json()))
+      );
+  }
 }

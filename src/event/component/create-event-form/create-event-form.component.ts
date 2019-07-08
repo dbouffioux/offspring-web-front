@@ -27,9 +27,7 @@ export class CreateEventFormComponent implements OnInit {
     this.event = new Event();
     this.createEventForm = this.fb.group({
       name: this.fb.control(this.event.name, [Validators.required, Validators.maxLength(20)]),
-      dateDebut: this.fb.control(this.event.dateDebut, [
-        Validators.required
-      ]),
+      dateDebut: this.fb.control(this.event.dateDebut, [Validators.required]),
       dateFin: this.fb.control(this.event.dateFin, [Validators.required]),
       heureDebut: this.fb.control(this.event.heureDebut, [Validators.required]),
       heureFin: this.fb.control(this.event.heureFin, [Validators.required]),
@@ -37,7 +35,7 @@ export class CreateEventFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dateNowFormatted = DateUtilsComponent.formatDateToString(new Date());
+    this.dateNowFormatted = DateUtilsComponent.formatDateToStringDate(new Date());
   }
 
   hasNameError() {
