@@ -30,7 +30,6 @@ export class CreateEventFormComponent implements OnInit {
       heureFin: this.fb.control(this.event.heureFin, [Validators.required]),
     });
   }
-
   ngOnInit() {
   }
 
