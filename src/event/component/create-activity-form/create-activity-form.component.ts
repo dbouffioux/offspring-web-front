@@ -44,7 +44,6 @@ export class CreateActivityFormComponent implements OnInit {
 
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
-    console.log('Submit : ' + this.activity.name);
 /*     result.subscribe(res => {
       this.res = res;
       if (this.res.error !== undefined) {
