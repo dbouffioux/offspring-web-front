@@ -4,6 +4,7 @@ import { Event } from 'src/event/models/event.model';
 import { Router } from '@angular/router';
 import { EventService } from 'src/event/services/event.service';
 import { AuthenticationService } from 'src/person/services/authentication.service';
+import DateUtilsComponent from 'src/app/utils/DateUtilsComponent';
 
 @Component({
   selector: 'app-create-event-form',
@@ -14,6 +15,7 @@ export class CreateEventFormComponent implements OnInit {
 
   public event: Event;
   public createEventForm: FormGroup;
+  public dateNowFormatted: string;
 
   constructor(
     private router: Router,
@@ -21,21 +23,26 @@ export class CreateEventFormComponent implements OnInit {
     private eventService: EventService,
     private authService: AuthenticationService
     ) {
+
     this.event = new Event();
     this.createEventForm = this.fb.group({
-      name: this.fb.control(this.event.name, [Validators.required]),
-      dateDebut: this.fb.control(this.event.dateDebut, [Validators.required]),
+      name: this.fb.control(this.event.name, [Validators.required, Validators.maxLength(20)]),
+      dateDebut: this.fb.control(this.event.dateDebut, [
+        Validators.required
+      ]),
       dateFin: this.fb.control(this.event.dateFin, [Validators.required]),
       heureDebut: this.fb.control(this.event.heureDebut, [Validators.required]),
       heureFin: this.fb.control(this.event.heureFin, [Validators.required]),
     });
   }
+
   ngOnInit() {
+    this.dateNowFormatted = DateUtilsComponent.formatDateToString(new Date());
   }
 
   hasNameError() {
     const control = this.createEventForm.get('name');
-    return control.errors && control.errors.required;
+    return control.errors && (control.errors.required || control.errors.maxLength);
   }
 
   hasDateDebutError() {

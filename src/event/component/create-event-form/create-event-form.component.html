@@ -3,18 +3,20 @@
   <div class="form-element">
       <label class="label" for="name">Nom: </label>
       <input type="text" id="name" name="name" formControlName="name"/><br>
-      <div class="error-form" *ngIf="hasNameError()">Requis !</div><br>
+      <div class="error-form" *ngIf="hasNameError()">
+        Required !
+      </div><br>
   </div>
 
   <div class="form-element">
     <label class="label" class="label" for="dateDebut">Date début: </label>
-    <input type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
+    <input type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut" min="{{ dateNowFormatted }}"/><br>
     <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
   </div>
 
   <div class="form-element">
     <label class="label" class="label" for="dateFin">Date fin: </label>
-    <input type="date" id="dateFin" name="dateFin" formControlName="dateFin"/><br>
+    <input type="date" id="dateFin" name="dateFin" formControlName="dateFin" min="{{ dateNowFormatted }}"/><br>
     <div class="error-form" *ngIf="hasDateFinError()">Requis !</div><br>
   </div>
 
