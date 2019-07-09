@@ -56,18 +56,18 @@ export class CreateActivityFormComponent implements OnInit {
 
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
-
+    /*
     result.subscribe(res => {
-    /*   this.res = res;
+      this.res = res;
       if (this.res.error !== undefined) {
         this.error = this.res.error;
       } else if (this.res.id !== undefined) {
         this.authenticationService.setLoggedInUser(this.res.id);
         this.router.navigate(['/']);
       }
-    }); */
-
-
+    });
+    */
+    this.router.navigate(['/']);
   }
 
   // watch for event change

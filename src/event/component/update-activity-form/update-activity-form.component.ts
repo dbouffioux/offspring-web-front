@@ -6,7 +6,6 @@ import { ActivityService } from '../../services/activity.service';
 import { Activity } from '../../models/activity.model';
 import { Event } from '../../models/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-update-activity-form',

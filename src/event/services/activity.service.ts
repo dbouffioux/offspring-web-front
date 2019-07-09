@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Activity } from '../models/activity.model';
 import { Observable, throwError } from 'rxjs';
+import { Registration } from '../models/registration';
 
 
 @Injectable()
@@ -37,4 +38,20 @@ export class ActivityService {
     .put<Activity>(`${environment.baseUrl}update-activity/${id}`, payload)
     .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
+
+  public inscription(payload: Registration) {
+
+    return this.http
+      .post<Registration>(`${environment.baseUrl}create-registration`, payload)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
+
+  public desinscription(payload: Registration) {
+
+    return this.http
+      .delete<Registration>(`${environment.baseUrl}registration/`)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
+
+ /*  public getInscription() */
 }
