@@ -20,6 +20,9 @@ export class ActivityItemComponent implements OnInit {
   public registrationId: number;
   private id: string;
 
+  public isParticipantValue: boolean;
+
+
 
   constructor(
     private route: ActivatedRoute,
@@ -32,9 +35,12 @@ export class ActivityItemComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.getActivities();
+      const id: string = params.id;
+
     });
     this.registration = new Registration();
   }
+
 
   private getActivities() {
     this.activityService.getActivities().subscribe(
@@ -42,14 +48,27 @@ export class ActivityItemComponent implements OnInit {
         this.activity = activities.find(activity => activity.id.toString() === this.id);
         this.activityId = Number(this.id);
         this.canManage = this.authenticationService.isOwner(this.activity.creator.id);
+        this.isParticipant();
       }
     );
+  }
+
+  public isParticipant() {
+    const currentUserId = this.authenticationService.getLoggedInUser();
+    this.isParticipantValue = false;
+    this.activity.participants.map((participant) => {
+      console.log();
+      if (participant.id.toString() === currentUserId) {
+        this.isParticipantValue = true;
+      }
+    });
+
   }
 
   public inscription() {
     this.registration.activityId = Number(this.activity.id);
     this.registration.personId = Number(this.authenticationService.getLoggedInUser());
-    this.activityService.inscription(this.registration).subscribe();
+    this.activityService.inscription(this.registration).subscribe(() => {location.reload()} );
     this.router.navigate(['/events/activity/' + this.activity.id]);
     this.getActivities();
   }
@@ -60,6 +79,7 @@ export class ActivityItemComponent implements OnInit {
         const reg = registrations.find(registration => registration.activityId === this.activityId);
         this.registrationId = reg.id;
         this.activityService.desinscription(Number(this.registrationId)).subscribe();
+        location.reload();
       }
     );
     this.getActivities();
@@ -75,7 +95,7 @@ export class ActivityItemComponent implements OnInit {
 
   public onRemove() {
     this.activityService.delete(this.activity.id).subscribe();
-    this.router.navigate(['/']);
+    location.reload();
   }
 
   public onCreate(event: Activity) {

@@ -26,18 +26,11 @@
         </li>
       </ul>
     </div>
+    <div *ngIf="!isParticipantValue">
       <button (click)="inscription(activity)">SUBSCRIBE</button>
+    </div>
+    <div *ngIf="isParticipantValue">
       <button (click)="desinscription(activity)">UNSUBSCRIBE</button>
-      1. faire un composant avec le LOGIN si on veut s'inscrire<br>
-      1. bis remplacer dans la page d'accueil le login si pas connecté par le composant qui fera pareil<br>
-      2. si le gars pas connecté afficher le login<br>
-      3. si connecté :<br><br>
-        1. et pas inscrit, bouton inscription > mene vers api person service subscribe event.<br>
-        donc ajouter dans api subscribe a levent<br>
-        2. si inscrit, changer texte en (se désinscrire) donc ajouter methode api pour se désinscrire a levent<br>
-
-        <br><br>
-        ENSUITE : faire page profil qui contient les inscriptions de la personne connectée et l'API
-        <br> qui renvoit toutes les données nécessaire à l'affichage.
+    </div>
   </div>
 </div>
