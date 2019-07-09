@@ -6,6 +6,7 @@ import { Activity } from 'src/event/models/activity.model';
 import { ActivityService } from '../../services/activity.service';
 import { AuthenticationService } from '../../../person/services/authentication.service';
 import DateUtilsComponent from 'src/app/utils/DateUtilsComponent';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-activity-form',
@@ -24,6 +25,7 @@ export class CreateActivityFormComponent implements OnInit {
   public heureMax: string;
 
   constructor(
+    private router: Router,
     private authenticationService: AuthenticationService,
     private eventService: EventService,
     private fb: FormBuilder,
@@ -54,17 +56,18 @@ export class CreateActivityFormComponent implements OnInit {
 
     const result = this.activityService.postActivity(this.activity);
     result.subscribe();
-    /*
+
     result.subscribe(res => {
-      this.res = res;
+    /*   this.res = res;
       if (this.res.error !== undefined) {
         this.error = this.res.error;
       } else if (this.res.id !== undefined) {
         this.authenticationService.setLoggedInUser(this.res.id);
         this.router.navigate(['/']);
       }
-    });
-    */
+    }); */
+
+
   }
 
   // watch for event change

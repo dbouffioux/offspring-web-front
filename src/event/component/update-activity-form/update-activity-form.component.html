@@ -17,7 +17,6 @@
     <input value = "{{ activity.dateDebut | date: 'yyyy-mm-dd'  }}" type="date" id="dateDebut" name="dateDebut" formControlName="dateDebut"/><br>
      <div class="error-form" *ngIf="hasDateDebutError()">Requis !</div><br>
    </div>
-   {{ activity.dateDebut | date: 'yyyy-mm-dd'  }}
   <div class="form-element">
     <label for="dateFin">Date fin: </label>
     <input value = "{{ activity.dateFin }}" type="date" id="dateFin" name="dateFin" formControlName="dateFin"/><br>
@@ -36,6 +35,6 @@
      <div class="error-form" *ngIf="hasHeureFinError()">Requis !</div><br>
    </div>
 
-<input class="submit" type="submit"  [disabled]="!createActivityForm.valid" />
-
+<input class="submit" type="submit" [disabled]="!createActivityForm.valid"/>
+<!--   -->
 </form>
