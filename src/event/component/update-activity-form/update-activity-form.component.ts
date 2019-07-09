@@ -15,7 +15,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateActivityFormComponent implements OnInit {
 
   public events: Event[];
+  public event: Event;
   public activity: Activity;
+  public newActivity: Activity;
   public updateActivityForm: FormGroup;
   public canManage: boolean;
   public id: string;
@@ -40,17 +42,17 @@ export class UpdateActivityFormComponent implements OnInit {
 
   public onSubmit() {
     const val = this.updateActivityForm.value;
-    this.activity.name = val.name;
-    this.activity.eventId = val.event;
-    this.activity.dateDebut = val.dateDebut;
-    this.activity.dateFin = val.dateFin;
-    this.activity.heureDebut = val.heureDebut + ':00';
-    this.activity.heureFin = val.heureFin + ':00';
-    this.activity.creatorId = this.authenticationService.getLoggedInUser();
+    this.newActivity.name = val.name;
+    this.newActivity.eventId = val.event;
+    this.newActivity.dateDebut = val.dateDebut;
+    this.newActivity.dateFin = val.dateFin;
+    this.newActivity.heureDebut = val.heureDebut + ':00';
+    this.newActivity.heureFin = val.heureFin + ':00';
+    this.newActivity.creatorId = this.authenticationService.getLoggedInUser();
+    this.newActivity.id = Number(this.id);
+    console.log('test: ' + this.authenticationService.getLoggedInUser());
 
-    console.log(this.authenticationService.getLoggedInUser());
-
-    const result = this.activityService.updateActivity(this.activity, this.id);
+    const result = this.activityService.updateActivity(this.newActivity, this.id);
     result.subscribe();
     this.router.navigate(['/']);
   }
@@ -58,6 +60,7 @@ export class UpdateActivityFormComponent implements OnInit {
   ngOnInit() {
     const now = new Date(Date.now());
     const val = this.updateActivityForm.value;
+    this.event = new Event();
     this.eventService.getEvents().subscribe(events => {
       this.events = events;
     });
@@ -71,6 +74,7 @@ export class UpdateActivityFormComponent implements OnInit {
         }
       );
     });
+    this.newActivity = new Activity();
     console.log(this.activity.dateDebut);
   }
 

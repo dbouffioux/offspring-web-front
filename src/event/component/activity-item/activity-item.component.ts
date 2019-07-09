@@ -17,6 +17,8 @@ export class ActivityItemComponent implements OnInit {
   public deleteResult = false;
   public registration: Registration;
   public activityId: number;
+  public registrationId: number;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -47,9 +49,17 @@ export class ActivityItemComponent implements OnInit {
   }
 
   public desinscription(){
-    this.registration.activityId = Number(this.activity.id);
+    this.activityService.getInscriptionIdByPersonId(Number(this.authenticationService.getLoggedInUser())).subscribe(
+      registrations => {
+        const reg = registrations.find(registration => registration.activityId === this.activityId);
+        this.registrationId = reg.id;
+        this.activityService.desinscription(Number(this.registrationId)).subscribe();
+      }
+    );
+
+    /* this.registration.activityId = Number(this.activity.id);
     this.registration.personId = Number(this.authenticationService.getLoggedInUser());
-    this.activityService.inscription(this.registration).subscribe();
+    this.activityService.inscription(this.registration).subscribe(); */
   }
 
   public onEdit(event: Activity) {

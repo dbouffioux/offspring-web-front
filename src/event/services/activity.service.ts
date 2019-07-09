@@ -46,12 +46,16 @@ export class ActivityService {
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  public desinscription(payload: Registration) {
-
+  public desinscription(id: number) {
+    console.log(`${environment.baseUrl}registration/${id}`);
     return this.http
-      .delete<Registration>(`${environment.baseUrl}registration/`)
+      .delete<Registration>(`${environment.baseUrl}registration/${id}`)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
- /*  public getInscription() */
+   public getInscriptionIdByPersonId(id: number) {
+    return this.http
+    .get<Registration[]>(`${environment.baseUrl}registration/${id}`)
+    .pipe(catchError((error: any) => throwError(error.json())));
+   }
 }
