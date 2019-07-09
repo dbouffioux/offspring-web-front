@@ -18,6 +18,7 @@ export class ActivityItemComponent implements OnInit {
   public registration: Registration;
   public activityId: number;
   public registrationId: number;
+  private id: string;
 
 
   constructor(
@@ -29,16 +30,20 @@ export class ActivityItemComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const id: string = params.id;
-      this.activityService.getActivities().subscribe(
-        activities => {
-          this.activity = activities.find(activity => activity.id.toString() === id);
-          this.activityId = Number(id);
-          this.canManage = this.authenticationService.isOwner(this.activity.creator.id);
-        }
-      );
+      this.id = params.id;
+      this.getActivities();
     });
     this.registration = new Registration();
+  }
+
+  private getActivities() {
+    this.activityService.getActivities().subscribe(
+      activities => {
+        this.activity = activities.find(activity => activity.id.toString() === this.id);
+        this.activityId = Number(this.id);
+        this.canManage = this.authenticationService.isOwner(this.activity.creator.id);
+      }
+    );
   }
 
   public inscription() {
@@ -46,7 +51,7 @@ export class ActivityItemComponent implements OnInit {
     this.registration.personId = Number(this.authenticationService.getLoggedInUser());
     this.activityService.inscription(this.registration).subscribe();
     this.router.navigate(['/events/activity/' + this.activity.id]);
-    location.reload();
+    this.getActivities();
   }
 
   public desinscription(){
@@ -57,7 +62,7 @@ export class ActivityItemComponent implements OnInit {
         this.activityService.desinscription(Number(this.registrationId)).subscribe();
       }
     );
-    location.reload();
+    this.getActivities();
   }
 
   public onEdit(event: Activity) {
