@@ -59,6 +59,7 @@ export class ActivityItemComponent implements OnInit {
     this.registration.personId = Number(this.authenticationService.getLoggedInUser());
     this.activityService.inscription(this.registration).subscribe(() => {location.reload()} );
     this.router.navigate(['/events/activity/' + this.activity.id]);
+    location.reload();
   }
 
   public desinscription(){
@@ -81,7 +82,6 @@ export class ActivityItemComponent implements OnInit {
   }
 
   public onRemove() {
-
     this.activityService.delete(this.activity.id).subscribe();
     location.reload();
   }
