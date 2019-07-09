@@ -46,6 +46,7 @@ export class ActivityItemComponent implements OnInit {
     this.registration.personId = Number(this.authenticationService.getLoggedInUser());
     this.activityService.inscription(this.registration).subscribe();
     this.router.navigate(['/events/activity/' + this.activity.id]);
+    location.reload();
   }
 
   public desinscription(){
@@ -56,10 +57,7 @@ export class ActivityItemComponent implements OnInit {
         this.activityService.desinscription(Number(this.registrationId)).subscribe();
       }
     );
-
-    /* this.registration.activityId = Number(this.activity.id);
-    this.registration.personId = Number(this.authenticationService.getLoggedInUser());
-    this.activityService.inscription(this.registration).subscribe(); */
+    location.reload();
   }
 
   public onEdit(event: Activity) {
@@ -71,7 +69,6 @@ export class ActivityItemComponent implements OnInit {
   }
 
   public onRemove() {
-
     this.activityService.delete(this.activity.id).subscribe();
     this.router.navigate(['/']);
   }
